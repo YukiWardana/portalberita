@@ -19,15 +19,16 @@
     <!-- Navigation Kategori -->
     <nav class="bg-gray-200 py-2">
         <div class="flex justify-center space-x-4">
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Berita</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Olahraga</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">E-Sports</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Politik</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Otomotif</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Hiburan</button>
-            <button class="px-4 py-2 hover:bg-gray-300 rounded">Teknologi</button>
+            <a href="{{ route('home') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Berita</a>
+            <a href="{{ route('kategori.olahraga') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Olahraga</a>
+            <a href="{{ route('kategori.esports') }}" class="px-4 py-2 hover:bg-gray-300 rounded">E-Sports</a>
+            <a href="{{ route('kategori.politik') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Politik</a>
+            <a href="{{ route('kategori.otomotif') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Otomotif</a>
+            <a href="{{ route('kategori.hiburan') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Hiburan</a>
+            <a href="{{ route('kategori.teknologi') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Teknologi</a>
         </div>
     </nav>
+
 
     <!-- Main Content -->
     <main class="flex justify-center items-start gap-4 mt-8 px-6">
