@@ -19,6 +19,10 @@ Route::get('/berita2', function () {
     return view('berita2');
 })->name('berita2');
 
+Route::get('/berita3', function () {
+    return view('berita3');
+})->name('berita3');
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');
