@@ -11,7 +11,7 @@
         <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Masuk atau Daftar</h2>
         <p class="text-gray-600 mb-6 text-center">Silahkan masuk jika sudah memiliki akun atau mendaftar jika belum memiliki akun</p>
 
-        <form action="#" method="POST" class="space-y-4">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div>
                 <label for="username" class="block text-gray-700">Username</label>

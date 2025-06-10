@@ -9,13 +9,27 @@
 <body class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('/Images/Background1.png');">
     <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 w-full max-w-md">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Daftar Akun Baru</h2>
-        <p class="text-gray-600 mb-6 text-center">Silahkan isi username dan password untuk akun baru</p>
+        <p class="text-gray-600 mb-6 text-center">Silahkan isi nama, email, dan password untuk mendaftar</p>
+
+        @if(session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <form action="{{ route('register') }}" method="POST" class="space-y-4">
             @csrf
             <div>
+                <label for="nama" class="block text-gray-700">Nama</label>
+                <input type="text" id="nama" name="nama" class="w-full mt-1 border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+            </div>
+            <div>
                 <label for="username" class="block text-gray-700">Username</label>
                 <input type="text" id="username" name="username" class="w-full mt-1 border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700">Email</label>
+                <input type="email" id="email" name="email" class="w-full mt-1 border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
             </div>
             <div>
                 <label for="password" class="block text-gray-700">Password</label>

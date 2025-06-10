@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('home');
@@ -34,3 +35,12 @@ Route::get('/kategori/politik', [KategoriController::class, 'politik'])->name('k
 Route::get('/kategori/otomotif', [KategoriController::class, 'otomotif'])->name('kategori.otomotif');
 Route::get('/kategori/hiburan', [KategoriController::class, 'hiburan'])->name('kategori.hiburan');
 Route::get('/kategori/teknologi', [KategoriController::class, 'teknologi'])->name('kategori.teknologi');
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
