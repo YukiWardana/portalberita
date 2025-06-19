@@ -17,7 +17,7 @@
                     <h2 class="text-xl font-bold mb-2">{{ $item['title'] }}</h2>
                     <h3 class="text-gray-600 mb-4">{{ $item['source_id'] ?? 'Unknown Source' }}</h3>
                     <p class="text-gray-700 text-sm">{{ $item['description'] ?? 'Tidak ada deskripsi.' }}</p>
-                    <a href="{{ route('beritadetail', ['index' => $loop->index]) }}" class="text-blue-500 hover:underline"> Baca Selengkapnya</a>
+                    <a href="{{ $item['source_id'] == 'Lokal' ? $item['link'] : route('beritadetail', ['index' => $loop->index]) }}" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
                 </div>
                 @if(!empty($item['image_url']))
                     <div class="w-40 h-32 shrink-0">

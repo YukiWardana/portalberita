@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\News;
 
 class KategoriController extends Controller
 {
     public function home()
-    {
+{
+    
     $response = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
@@ -16,12 +18,33 @@ class KategoriController extends Controller
         'category' => 'top',
     ]);
 
-    $news = $response->json()['results'] ?? [];
+    $apiNews = $response->json()['results'] ?? [];
+
+    
+    $localNews = News::where('STATUS_BERITA', 1)->latest()->get()->map(function ($item) {
+        return [
+            'title' => $item->JUDUL,
+            'description' => $item->KONTEN,
+            'image_url' => asset($item->GAMBAR),
+            'source_id' => 'Lokal',
+            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+        ];
+    });
+
+    
+    $news = collect($localNews)->merge($apiNews);
 
     session(['news_articles' => $news]);
 
     return view('home', compact('news'));
-    }
+}
+
+    public function showLocalDetail($id)
+{
+    $berita = News::findOrFail($id);
+
+    return view('beritadetail_local', compact('berita'));
+}
 
     public function showBerita($index)
     {

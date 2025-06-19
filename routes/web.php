@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KomentarController;
 
 Route::get('/', function () {
     return view('home');
@@ -47,3 +48,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/berita/{index}', [KategoriController::class, 'showBerita'])->name('beritadetail');
+
+Route::get('/berita-local/{id}', [KategoriController::class, 'showLocalDetail'])->name('beritadetail_local');
+
