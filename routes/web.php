@@ -28,11 +28,12 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::get('home', [KategoriController::class, 'home'])->name('home');
+Route::get('/', [KategoriController::class, 'home'])->name('home');
+
 Route::get('/kategori/olahraga', [KategoriController::class, 'olahraga'])->name('kategori.olahraga');
-Route::get('/kategori/esports', [KategoriController::class, 'esports'])->name('kategori.esports');
+Route::get('/kategori/bisnis', [KategoriController::class, 'bisnis'])->name('kategori.bisnis');
 Route::get('/kategori/politik', [KategoriController::class, 'politik'])->name('kategori.politik');
-Route::get('/kategori/otomotif', [KategoriController::class, 'otomotif'])->name('kategori.otomotif');
+Route::get('/kategori/kesehatan', [KategoriController::class, 'kesehatan'])->name('kategori.kesehatan');
 Route::get('/kategori/hiburan', [KategoriController::class, 'hiburan'])->name('kategori.hiburan');
 Route::get('/kategori/teknologi', [KategoriController::class, 'teknologi'])->name('kategori.teknologi');
 
@@ -44,3 +45,5 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/berita/{index}', [KategoriController::class, 'showBerita'])->name('beritadetail');

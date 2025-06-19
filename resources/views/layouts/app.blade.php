@@ -33,9 +33,9 @@
         <div class="flex flex-wrap justify-center space-x-2 md:space-x-4">
             <a href="{{ route('home') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Berita</a>
             <a href="{{ route('kategori.olahraga') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Olahraga</a>
-            <a href="{{ route('kategori.esports') }}" class="px-4 py-2 hover:bg-gray-300 rounded">E-Sports</a>
+            <a href="{{ route('kategori.bisnis') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Bisnis</a>
             <a href="{{ route('kategori.politik') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Politik</a>
-            <a href="{{ route('kategori.otomotif') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Otomotif</a>
+            <a href="{{ route('kategori.kesehatan') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Kesehatan</a>
             <a href="{{ route('kategori.hiburan') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Hiburan</a>
             <a href="{{ route('kategori.teknologi') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Teknologi</a>
         </div>

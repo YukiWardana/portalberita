@@ -1,36 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Berita</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-cover bg-center min-h-screen" style="background-image: url('/Images/Background1.png');">
-    <!-- Header -->
-    <header class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-        <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-800 hover:text-blue-600">PORTAL BERITA</a>
-        <div class="flex items-center space-x-4">
-            <input type="text" placeholder="Cari Berita" class="border rounded-full px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <a href="{{ route('login') }}" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Login</a>
-        </div>
-    </header>
+@extends('layouts.app')
 
-    <!-- Navigation Kategori -->
-    <nav class="bg-gray-200 py-2">
-        <div class="flex justify-center space-x-4">
-            <a href="{{ route('home') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Berita</a>
-            <a href="{{ route('kategori.olahraga') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Olahraga</a>
-            <a href="{{ route('kategori.esports') }}" class="px-4 py-2 hover:bg-gray-300 rounded">E-Sports</a>
-            <a href="{{ route('kategori.politik') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Politik</a>
-            <a href="{{ route('kategori.otomotif') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Otomotif</a>
-            <a href="{{ route('kategori.hiburan') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Hiburan</a>
-            <a href="{{ route('kategori.teknologi') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Teknologi</a>
-        </div>
-    </nav>
+@section('title', 'Berita 1')
 
+@section('content')
     <!-- Main Content -->
-    <main class="flex justify-center items-start gap-4 mt-8 px-6">
+    <div class="flex justify-center items-start gap-4 mt-8 px-6">
         <!-- Iklan Kiri -->
         <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
             IKLAN
@@ -67,6 +41,5 @@
         <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
             IKLAN
         </div>
-    </main>
-</body>
-</html>
+    </div>
+@endsection

@@ -3,48 +3,36 @@
 @section('title', 'Kategori Olahraga')
 
 @section('content')
-    <div class="flex flex-col md:flex-row justify-center items-start gap-4">
-        <!-- Iklan Kiri -->
-        <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
-            IKLAN
-        </div>
-    
-        <!-- Berita -->
-        <div class="w-full md:w-3/5 space-y-6">
-            <a href="{{ route('berita1') }}" class="flex bg-white p-6 rounded-lg shadow hover:shadow-lg transition gap-4">
-                <div class="flex-1">
-                    <h2 class="text-xl font-bold mb-2">Valorant VCT Pacific KickOff</h2>
-                    <h3 class="text-gray-600 mb-4">Subheading</h3>
-                    <p class="text-gray-700 text-sm">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look.
-                        <br><br>
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui  international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="w-40 h-32 shrink-0">
-                    <img src="/Images/berita1.jpg" alt="Gambar Berita 1" class="w-full h-full object-cover rounded-lg">
-                </div>
-            </a>
+<div class="flex flex-col md:flex-row justify-center items-start gap-4 mt-8 px-4 md:px-6">
+    <!-- Iklan Kiri -->
+    <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
+        IKLAN
+    </div>
 
-            <a href="{{ route('berita3') }}" class="flex bg-white p-6 rounded-lg shadow hover:shadow-lg transition gap-4">
+    <!-- Berita dari API -->
+    <div class="w-full md:w-3/5 space-y-6">
+        @forelse($news as $item)
+            <div class="flex bg-white p-6 rounded-lg shadow hover:shadow-lg transition gap-4">
                 <div class="flex-1">
-                    <h2 class="text-xl font-bold mb-2">SELAMAT! RRQ MENJUARAI VCT PACIFIC STAGE 1</h2>
-                    <h3 class="text-gray-600 mb-4">Subheading</h3>
-                    <p class="text-gray-700 text-sm">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look.
-                        <br><br>
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui  international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                    <h2 class="text-xl font-bold mb-2">{{ $item['title'] }}</h2>
+                    <h3 class="text-gray-600 mb-4">{{ $item['source_id'] ?? 'Unknown Source' }}</h3>
+                    <p class="text-gray-700 text-sm">{{ $item['description'] ?? 'Tidak ada deskripsi.' }}</p>
+                    <a href="{{ route('beritadetail', ['index' => $loop->index]) }}" class="text-blue-500 hover:underline"> Baca Selengkapnya</a>
                 </div>
-                <div class="w-40 h-32 shrink-0">
-                    <img src="/Images/berita3.jpg" alt="Gambar Berita 2" class="w-full h-full object-cover rounded-lg">
-                </div>
-            </a>
-        </div>
-    
-        <!-- Iklan Kanan -->
-        <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
-            IKLAN
-        </div>
-    </div>    
+                @if(!empty($item['image_url']))
+                    <div class="w-40 h-32 shrink-0">
+                        <img src="{{ $item['image_url'] }}" alt="Gambar" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                @endif
+            </div>
+        @empty
+            <p class="text-center text-gray-500">Berita tidak tersedia saat ini.</p>
+        @endforelse
+    </div>
+
+    <!-- Iklan Kanan -->
+    <div class="hidden md:flex w-1/5 bg-gray-300 items-center justify-center text-xl font-bold py-10">
+        IKLAN
+    </div>
+</div>
 @endsection

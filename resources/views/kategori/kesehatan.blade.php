@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beranda')
+@section('title', 'Kategori Kesehatan')
 
 @section('content')
 <div class="flex flex-col md:flex-row justify-center items-start gap-4 mt-8 px-4 md:px-6">
