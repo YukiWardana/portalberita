@@ -24,7 +24,8 @@ class KategoriController extends Controller
     $localNews = News::where('STATUS_BERITA', 1)->latest()->get()->map(function ($item) {
         return [
             'title' => $item->JUDUL,
-            'description' => $item->KONTEN,
+            'description' => $item->DESKRIPSI,
+            'content' => $item->KONTEN,
             'image_url' => asset($item->GAMBAR),
             'source_id' => 'Lokal',
             'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
@@ -60,96 +61,171 @@ class KategoriController extends Controller
     }
 
     public function olahraga()
-    {
-    $response = Http::get('https://newsdata.io/api/1/news', [
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'sports',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 1)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.olahraga', compact('news'));
-    }
+}
 
     public function bisnis()
-    {
-    $response = Http::get('https://newsdata.io/api/1/news', [
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'business',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 2)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.bisnis', compact('news'));
-    }
+}
 
-    public function politik()
-    {
-    $response = Http::get('https://newsdata.io/api/1/news', [
+        public function politik()
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'politics',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 3)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.politik', compact('news'));
-    }
+}
 
     public function kesehatan()
-    {
-    $response = Http::get('https://newsdata.io/api/1/news', [
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'health',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 4)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.kesehatan', compact('news'));
-    }
+}
 
-    public function hiburan() {
-        $response = Http::get('https://newsdata.io/api/1/news', [
+    public function hiburan()
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'entertainment',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 5)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.hiburan', compact('news'));
-    }
+}
 
-    public function teknologi() {
-        $response = Http::get('https://newsdata.io/api/1/news', [
+    public function teknologi()
+{
+    $apiNews = Http::get('https://newsdata.io/api/1/news', [
         'apikey' => env('NEWSDATA_API_KEY'),
         'country' => 'id',
         'language' => 'id',
         'category' => 'technology',
-    ]);
+    ])->json()['results'] ?? [];
 
-    $news = $response->json()['results'] ?? [];
+    $localNews = News::where('STATUS_BERITA', 1)
+                    ->where('CATEGORY_ID', 2)
+                    ->latest()
+                    ->get()
+                    ->map(function ($item) {
+                        return [
+                            'title' => $item->JUDUL,
+                            'description' => $item->DESKRIPSI,
+                            'image_url' => asset($item->GAMBAR),
+                            'source_id' => 'Lokal',
+                            'link' => route('beritadetail_local', ['id' => $item->NEWS_ID]),
+                        ];
+                    });
 
-    session(['news_articles' => $news]);
+    $news = collect($localNews)->merge($apiNews);
 
     return view('kategori.teknologi', compact('news'));
-    }
+}
+
 }

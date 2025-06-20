@@ -13,10 +13,17 @@ class News extends Model
 
     protected $fillable = [
         'JUDUL',
+        'DESKRIPSI',
         'KONTEN',
         'TANGGAL_PUBLIKASI',
         'STATUS_BERITA',
         'GAMBAR',
         'USER_ID',
+        'CATEGORY_ID',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'CATEGORY_ID');
+    }
 }
