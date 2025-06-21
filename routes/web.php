@@ -5,10 +5,6 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomentarController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
 Route::get('/login', function () {
     return view('login');
 })->name('login');
