@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    protected $table = 'NEWS'; 
+    protected $table = 'news'; 
     protected $primaryKey = 'NEWS_ID'; 
 
     public $timestamps = false;
