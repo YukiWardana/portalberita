@@ -47,7 +47,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['USERNAME' => $credentials['username'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // ganti dengan route home jika perlu
+            return redirect()->intended('/');
         }
 
         return back()->withErrors(['username' => 'Login gagal, periksa kembali username atau password.']);
