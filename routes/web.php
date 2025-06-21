@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomentarController;
@@ -51,3 +52,12 @@ Route::get('/berita/{index}', [KategoriController::class, 'showBerita'])->name('
 
 Route::get('/berita-local/{id}', [KategoriController::class, 'showLocalDetail'])->name('beritadetail_local');
 
+Route::get('/debug', function () {
+    return [
+        'php_version' => PHP_VERSION,
+        'app_key' => env('APP_KEY'),
+        'db_file' => DB::connection()->getDatabaseName(),
+        'db_connection' => config('database.default'),
+        'db_status' => DB::connection()->getPdo() ? 'connected' : 'fail'
+    ];
+});
