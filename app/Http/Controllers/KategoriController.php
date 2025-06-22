@@ -40,10 +40,9 @@ class KategoriController extends Controller
     return view('home', compact('news'));
 }
 
-    public function showLocalDetail($id)
+   public function showLocalDetail($id)
 {
-    $berita = News::findOrFail($id);
-
+    $berita = News::with('komentar.user')->findOrFail($id);
     return view('beritadetail_local', compact('berita'));
 }
 

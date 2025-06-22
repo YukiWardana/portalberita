@@ -26,4 +26,9 @@ class News extends Model
     {
         return $this->belongsTo(Category::class, 'CATEGORY_ID');
     }
+
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class, 'NEWS_ID', 'NEWS_ID');
+    }
 }

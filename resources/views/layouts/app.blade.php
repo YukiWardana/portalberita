@@ -8,11 +8,19 @@
 </head>
 <body class="bg-cover bg-center min-h-screen" style="background-image: url('/Images/Background1.png');">
 
+    <!-- Header -->
     <header class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
         <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-800 hover:text-blue-600">PORTAL BERITA</a>
         <div class="flex items-center space-x-4">
-            <input type="text" placeholder="Cari Berita" class="border rounded-full px-4 py-2 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
 
+            <!-- Form Search -->
+            <form action="{{ route('search') }}" method="GET" class="flex items-center space-x-2">
+                <input type="text" name="q" placeholder="Cari Berita"
+                    class="border rounded-full px-4 py-2 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Cari</button>
+            </form>
+
+            <!-- Auth Menu -->
             @auth
                 <p class="text-sm text-gray-700">Halo, {{ Auth::user()->NAMA }}</p>
                 <form action="{{ route('logout') }}" method="POST">
@@ -27,6 +35,7 @@
         </div>
     </header>
 
+    <!-- Navigation Kategori -->
     <nav class="bg-gray-200 py-2">
         <div class="flex flex-wrap justify-center space-x-2 md:space-x-4">
             <a href="{{ route('home') }}" class="px-4 py-2 hover:bg-gray-300 rounded">Berita</a>
@@ -39,6 +48,7 @@
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="px-4 md:px-6 py-8">
         @yield('content')
     </main>

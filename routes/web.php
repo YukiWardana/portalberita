@@ -46,3 +46,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/berita/{index}', [KategoriController::class, 'showBerita'])->name('beritadetail');
 
 Route::get('/berita-local/{id}', [KategoriController::class, 'showLocalDetail'])->name('beritadetail_local');
+
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
+
+Route::post('/komentar', [KomentarController::class, 'store'])->name('komentar.store');
